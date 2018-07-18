@@ -1,0 +1,12 @@
+<% provide :title, "List Book" %>
+<h1>List Book</h1>
+
+<%= paginate @books, theme: "twitter-bootstrap-3" %>
+<ul class="index_items">
+  <% @books.each do |book| %>
+    <li>
+      <%= render book %>
+    </li>
+  <% end %>
+</ul>
+<%= paginate @books, theme: "twitter-bootstrap-3" %>
