@@ -17,3 +17,14 @@ User.create!(name: "Example User",
                activated: true,
                activated_at: Time.zone.now)
 end
+99.times do |n|
+  name  = Faker::Name.name
+  author = Faker::Name.name
+  publisher = Faker::Name.name
+  status = "free"
+  Book.create!(name: name,
+               author: author,
+               publisher: publisher,
+               status: status,
+               free_time: Time.zone.now)
+end

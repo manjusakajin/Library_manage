@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     resources :users, except: :destroy
     resources :account_activations, only: :edit
     resources :password_resets, except: [:show, :index, :destroy]
+    resources :books, only: [:index, :show]
+    resources :categorys, only: [:index, :show]
   end
 end
