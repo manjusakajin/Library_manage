@@ -1,0 +1,13 @@
+<%= form_for @request do |f| %>
+  <%= render "shared/error_messages", object: @request %>
+
+  <%= hidden_field_tag :book_id, @book.id %>
+
+  <%= f.label :start, "From :" %>
+  <%= f.date_field :start, min: Date.today %>
+
+  <%= f.label :finish, "To :" %>
+  <%= f.date_field :finish, min: Date.today %>
+
+  <%= f.submit "Send Request", class: "btn btn-primary" %>
+<% end %>

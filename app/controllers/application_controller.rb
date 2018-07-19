@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
     #{options.inspect}\n"
     {locale: I18n.locale}
   end
+
+  def logged_in_user
+    return if logged_in?
+    store_location
+    flash[:danger] = t "warning.login"
+    redirect_to login_url
+  end
 end
