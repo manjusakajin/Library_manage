@@ -1,4 +1,8 @@
 <li>
   <%= gravatar_book book, size: 50 %>
   <%= link_to book.name, book %>
+  <% if logged_in? && current_user.admin? %>
+    | <%= link_to "Delete Book", admin_book_path(book.id) ,method: :delete,
+      data: { confirm: "Are you sure ?" } %>
+  <% end %>
 </li>

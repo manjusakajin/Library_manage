@@ -28,3 +28,8 @@ end
                status: status,
                free_time: Time.zone.now)
 end
+
+categorys = ["Fiction", "Novel", "Non-fiction", "Fantasy", "Mistery"]
+categorys.each do |category|
+  Category.create(name: category)
+end

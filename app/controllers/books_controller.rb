@@ -6,5 +6,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by id: params[:id]
+    @categorys = @book.categorys
+    @request = Request.new
   end
 end

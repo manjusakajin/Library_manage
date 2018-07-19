@@ -1,0 +1,13 @@
+<% provide :title, "List Request" %>
+<h1>List Request</h1>
+
+<%= paginate @requests, theme: "twitter-bootstrap-3" %>
+<ul class="index_items">
+  <li>Book - User - Start date - Finish date</li>
+  <% @requests.each do |request| %>
+    <li>
+      <%= render request %>
+    </li>
+  <% end %>
+</ul>
+<%= paginate @requests, theme: "twitter-bootstrap-3" %>

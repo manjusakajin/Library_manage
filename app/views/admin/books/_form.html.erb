@@ -1,0 +1,24 @@
+<%= form_for [:admin, @book] do |f| %>
+  <%= render "shared/error_messages", object: @book %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :author %>
+  <%= f.text_field :author, class: "form-control" %>
+
+  <%= f.label :publisher %>
+  <%= f.text_field :publisher, class: "form-control" %>
+
+  <% if @categorys %>
+    <%= f.collection_check_boxes(:category_ids,
+      @categorys, :id, :name)do |id| %>
+      <%= id.label class:"label-checkbox" do%>
+        <%= id.text %>
+        <%= id.check_box %>
+      <%end%>
+    <% end %>
+  <% end %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
