@@ -2,7 +2,15 @@ class Admin::UsersController < Admin::ApplicationController
   before_action :find_user, only: [:update, :destroy]
 
   def index
-    @users = User.select_user.page(params[:page]).per Settings.paginate.per_page
+    if params[:search]
+      keyword = "%#{params[:search].downcase}%"
+      @users =
+        User.where('lower(name) LIKE ?', keyword).
+        page(params[:page]).per Settings.paginate.per_page
+    else
+      @users =
+        User.select_user.page(params[:page]).per Settings.paginate.per_page
+    end
   end
 
   def update

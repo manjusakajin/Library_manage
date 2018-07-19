@@ -2,12 +2,17 @@
 <h1>List Request</h1>
 
 <%= paginate @requests, theme: "twitter-bootstrap-3" %>
-<ul class="index_items">
-  <li>Book - User - Start date - Finish date</li>
-  <% @requests.each do |request| %>
-    <li>
-      <%= render request %>
-    </li>
-  <% end %>
-</ul>
+<table id="t01">
+    <tr>
+      <th>Book</th>
+      <th>User</th>
+      <th>From</th>
+      <th>To</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @requests.each do |request| %>
+        <%= render request %>
+    <% end %>
+</table>
 <%= paginate @requests, theme: "twitter-bootstrap-3" %>

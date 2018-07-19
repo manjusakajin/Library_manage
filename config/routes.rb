@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     resources :account_activations, only: :edit
     resources :password_resets, except: [:show, :index, :destroy]
     resources :books, only: [:index, :show]
-    resources :categorys, only: [:index, :show]
+    resources :categories, only: [:index, :show]
     resources :requests, only: [:create, :destroy]
     namespace :admin do
       resources :books, except: [:index, :show]
-      resources :categorys, except: [:index]
+      resources :categories, except: [:index]
       resources :requests, except: :create
       resources :users, only: [:destroy, :index, :update]
     end
