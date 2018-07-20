@@ -1,6 +1,8 @@
 <% provide :title, "List Book" %>
+<% provide :path, books_path %>
 <h1>List Book</h1>
 
+<%= render "shared/search_form"%>
 <%= paginate @books, theme: "twitter-bootstrap-3" %>
 <ul class="index_items">
   <% @books.each do |book| %>

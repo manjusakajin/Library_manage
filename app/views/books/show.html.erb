@@ -1,7 +1,23 @@
-<li>
-  <p>Name: <%= @book.name %></p>
-  <p>Author: <%= @book.author %></p>
-  <p>publisher: <%= @book.publisher %></p>
-  <p>Status: <%= @book.status %></p>
-  <p>Free from: <%= @book.free_time %></p>
-</li>
+<h1>Name: <%= @book.name %></h1>
+<p>Name: <%= @book.name %></p>
+<p>Author: <%= @book.author %></p>
+<p>publisher: <%= @book.publisher %></p>
+<p>Status: <%= @book.status %></p>
+<p>Free from: <%= @book.free_time %></p>
+<% if @categorys %>
+  <p>
+    Category:
+    <% @categorys.each do |category| %>
+      <b><%= link_to category.name, category %> <b>
+    <% end %>
+  </p>
+<% end %>
+<% if logged_in? && current_user.admin? %>
+  <p><%= link_to "Delete Book", admin_book_path(@book.id) ,method: :delete,
+    data: { confirm: "Are you sure ?" } %></p>
+  <p><%= link_to "Edit Book", edit_admin_book_path(@book.id) %></p>
+<% end %>
+__________________________________________________________________
+<% if @request.id == nil %>
+  <%= render "request_form" %>
+<% end %>

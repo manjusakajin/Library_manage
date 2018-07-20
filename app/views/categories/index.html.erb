@@ -1,0 +1,19 @@
+<% provide :title, "List Category" %>
+<% provide :path, categories_path %>
+<h1>List Category</h1>
+
+<%= render "shared/search_form" %>
+<ul class="index_items">
+  <% @categorys.each do |category| %>
+    <li>
+      <% if logged_in? && current_user.admin? %>
+        <%= link_to category.name, admin_category_path(category.id) %>
+        | <%= link_to "Delete Category", admin_category_path(category.id) ,method: :delete,
+          data: { confirm: "Are you sure ?" } %>
+        | <%= link_to "Edit Category", edit_admin_category_path(category.id) %>
+      <% else %>
+        <%= link_to category.name, category %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

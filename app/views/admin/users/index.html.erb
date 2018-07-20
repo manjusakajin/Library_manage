@@ -1,5 +1,8 @@
 <% provide :title, t("all_user") %>
+<% provide :path, admin_users_path %>
 <h1><%= t "all_user" %></h1>
+
+<%= render "shared/search_form" %>
 
 <%= paginate @users, theme: "twitter-bootstrap-3" %>
 <ul class="index_items">

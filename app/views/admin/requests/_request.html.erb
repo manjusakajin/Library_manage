@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to request.book.name, request.book %></td>
+  <td><%= link_to request.user.name, request.user %></td>
+  <td><%= request.start.to_date %></td>
+  <td><%= request.finish.to_date %></th>
+  <td><%= link_to "Accept", admin_request_path(id: request.id) ,
+    method: :put, data: { confirm: "Are you sure ?" } %></th>
+  <td><%= link_to "Reject", admin_request_path(id: request.id), 
+    method: :delete, data: { confirm: "Are you sure ?" } %></th>
+</tr>

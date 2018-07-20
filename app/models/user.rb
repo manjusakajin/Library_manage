@@ -3,6 +3,9 @@ class User < ApplicationRecord
   before_create :create_activation_digest
   before_save :downcase_email
 
+  has_many :requests
+  has_many :book, through: :requests
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name,  presence: true, length: {maximum: Settings.name.maximum}
@@ -30,6 +33,11 @@ class User < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
+  end
+
+  def request book_id, start, finish
+    requests.create(book_id: book_id,
+      accept: nil, start: start, finish: finish)
   end
 
   def create_reset_digest
